@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLambda", "src\MyLambda\MyLambda.csproj", "{EBB093D1-B1D0-4890-916D-2E5A7D989EBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{40A067D5-24FF-4683-AB73-53B6D83E963B}"
+	ProjectSection(SolutionItems) = preProject
+		eks.yml = eks.yml
+		main.tf = main.tf
+		template.yml = template.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyClient", "src\MyClient\MyClient.csproj", "{94502E45-5516-4F89-9A5E-53D963CD7853}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBB093D1-B1D0-4890-916D-2E5A7D989EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBB093D1-B1D0-4890-916D-2E5A7D989EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBB093D1-B1D0-4890-916D-2E5A7D989EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBB093D1-B1D0-4890-916D-2E5A7D989EBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94502E45-5516-4F89-9A5E-53D963CD7853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94502E45-5516-4F89-9A5E-53D963CD7853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94502E45-5516-4F89-9A5E-53D963CD7853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94502E45-5516-4F89-9A5E-53D963CD7853}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8235FFF-5EC1-4A2D-AF02-1632FCF115DB}
+	EndGlobalSection
+EndGlobal

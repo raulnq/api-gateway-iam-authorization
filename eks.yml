@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+ name: myclient-sa
+ annotations:
+   eks.amazonaws.com/role-arn: arn:aws:iam::<MY_ACCOUNT_ID>:role/my-role
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myclient-deployment
+  labels:
+    app: myclient
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myclient
+  template:
+    metadata:
+      labels:
+        app: myclient
+    spec:
+      serviceAccountName: myclient-sa
+      containers:
+        - name: api-container
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: ASPNETCORE_HTTP_PORTS
+              value: '80'
+            - name: AWS_LAMBDA_ENDPOINT
+              value: 'https://<MY_API_GATEWAY_ID>.execute-api.<MY_REGION>.amazonaws.com/Prod/hello-world'
+            - name: AWS_ROLE_TO_ASSUME
+              value: 'arn:aws:iam::<MY_ACCOUNT_ID>:role/MyRoleToAssume'
+          image: <MY_ACCOUNT_ID>.dkr.ecr.<MY_REGION>.my-client-repository:1.0
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 500Mi
+            requests:
+              cpu: 250m
+              memory: 250Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myclient-service
+  labels:
+    app: myclient
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: myclient
